@@ -1,1 +1,45 @@
 // Promises are an object that keeps track about whether a certain event has happened or not. 
+
+//Promises
+
+        const getIDs = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve([523, 337, 294, 722]);
+            }, 1500);
+        });
+
+        const getRecipe = recID => {
+            return new Promise((resolve, reject) => {
+                setTimeout(ID => {
+                const recipe = {title: "Chicken Tikka Curry", publisher: "Sukh"};
+                resolve(`${ID}: ${recipe.title}`);
+                }, 1500, recID);
+            });
+        };
+
+        const getRelated = publisher => {
+            return new Promise((resolve, reject) => {
+                setTimeout(pub => {
+                    const recipe = {title: "Tuna Pasta", publisher: "Sukh"};
+                    resolve(`${pub}: ${recipe.title}`);
+                }, 1500, publisher);
+            });
+        };
+
+        getIDs
+        .then(IDs => {
+            console.log(IDs);
+            return getRecipe(IDs[2]);
+        })
+        .then(recipe => {
+            console.log(recipe);
+            return getRelated("Sukh Sangha");
+        })
+        .then(recipe => {
+            console.log(recipe);
+        })
+        .catch(error => {
+            console.log("error!");
+        });
+
+    </script>
